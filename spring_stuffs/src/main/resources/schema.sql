@@ -1,0 +1,5 @@
+CREATE TABLE OPERATION(
+  id      INT PRIMARY KEY AUTO_INCREMENT,
+  asset   VARCHAR(50),
+  amount  INT
+);
