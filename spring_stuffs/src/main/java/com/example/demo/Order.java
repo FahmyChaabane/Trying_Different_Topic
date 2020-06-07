@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
@@ -17,7 +18,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table(name="ORDER_TB")
-public class Order {
+public class Order implements Serializable {
 
     @Id
     @GeneratedValue

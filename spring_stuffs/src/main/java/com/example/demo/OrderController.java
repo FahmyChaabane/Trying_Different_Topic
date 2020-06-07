@@ -3,9 +3,9 @@ package com.example.demo;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +25,26 @@ public class OrderController {
     @GetMapping("/orders")
     public List<Order> getOrders() {
         return orderService.getOrders();
+    }
+
+    @GetMapping("/order/{orderName}")
+    public Order getOrders(@PathVariable  String orderName) {
+        return orderService.findOrder(orderName);
+    }
+
+    @PutMapping("/update_Order")
+    public Order updateOrders(@RequestBody Order order) {
+        return orderService.updateOrder(order);
+    }
+
+    @PostMapping("/insert_Order")
+    public void insertOrders(@RequestBody Order order) {
+        orderService.insertOrder(order);
+    }
+
+    @GetMapping("/flush")
+    public String flushCache() {
+        orderService.flushCache(); return "Done.";
     }
 
 }
